@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Color converter</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="color-convert.js"></script>
+    <script type="text/javascript">
+      function update_rgba_hex() {
+        var cname = document.getElementById("cname").value;
+        document.getElementById("rgba").innerHTML =
+          color_convert.to_rgba(cname);
+        document.getElementById("hex").innerHTML = color_convert.to_hex(cname);
+        var canvas, context;
+        canvas = document.getElementById("swatch");
+        context = canvas.getContext("2d");
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = cname;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="image">
+      <img src="images/rgb-colors.png" alt="RG B color codes" id="rgb-color" />
+    </div>
+
+    <div class="container">
+      <h1>
+        <span
+          ><span style="color: red">Color </span
+          ><span style="color: yellow">to </span>
+          <span style="color: green">hex </span
+          ><span style="color: black">and </span
+          ><span style="color: blue">rgba </span
+          ><span style="color: indigo">converter</span></span
+        >
+      </h1>
+      <p>
+        <em> Enter a color</em> <br />
+        <input
+          placeholder=" Enter a color"
+          size="30"
+          id="cname"
+          oninput="update_rgba_hex();"
+          class="input"
+        /><br /><br />
+        <button onclick="update_rgba_hex();" class="btn">Check it</button>
+      </p>
+      <br />
+      <hr />
+      <br />
+      <p>rgba:<code id="rgba"></code></p>
+      <p>hex: <code id="hex"></code></p>
+    </div>
+    <div class="container2">
+      <canvas
+        id="swatch"
+        width="250"
+        height="170"
+        style="border-radius: 10px 30px"
+      ></canvas>
+    </div>
+
+    <div class="image-hex">
+      <img src="images/hex-colors.webp" alt="HE X color codes" id="hex-color" />
+    </div>
+
+    <footer>© Copyright 2022. Made with ❤💕 viktech.</footer>
+    <script src="main.js"></script>
+  </body>
+</html>
